@@ -1,0 +1,76 @@
+---
+title: "STATISTICAL CONSULTING HW1"
+subtitle: "R26131125"
+date: today
+author: Zhen-Wei Yu
+format:
+ pdf:
+    include-in-header:
+      - text: |
+         \usepackage{setspace,relsize}
+         \usepackage{geometry}
+         \geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+#mainfont: "Microsoft JhengHei UI"
+#mainfont: "Microsoft JhengHei"
+mainfont: "Microsoft JhengHei Bold"
+editor: visual
+toc: true
+lang: zh-Tw
+documentclass: article
+pdf-engine: xelatex
+execute:
+  tidy: true
+  echo: true
+  warning: false
+  message: false
+---
+
+# Data description
+
+```{r, message=FALSE}
+library(Hmisc)
+
+data <- read.csv("C:\\Users\\user\\Desktop\\titanic.csv")
+describe(data)
+```
+
+# Data Visualization
+
+```{r}
+library(ggplot2)
+
+ggplot(data, aes(x = as.factor(Pclass), 
+                 fill = as.factor(Survived)))+
+  geom_bar() +labs(title = "Survival Rate by Passenger Class",
+                   x = "Passenger Class", y = "Count") +
+  scale_fill_manual(values = c("red", "green"),
+                    name = "Survived", labels = c("No", "Yes"))
+```
+
+```{r}
+ggplot(data, aes(x = Sex, fill = as.factor(Survived))) +
+  geom_bar() +labs(title = "Survival Rate by Gender",
+                   x = "Gender", y = "Count") +
+  scale_fill_manual(values = c("red", "green"),
+                    name = "Survived", labels = c("No", "Yes"))
+
+```
+
+```{r}
+ggplot(data, aes(x = as.factor(Survived), fill = as.factor(Survived))) +
+  geom_bar() +
+  labs(title = "Survival Count",
+       x = "Survival Status", y = "Count") +
+  scale_fill_manual(values = c("red", "green"), 
+                    name = "Survived", labels = c("No", "Yes")) +
+  theme_minimal()
+
+
+```
+# Conclusion
+
+\begin{itemize}
+\item Passengers in higher-class cabins had a higher survival rate.
+\item Women had a higher survival rate than men.
+\item More people died than survived.
+\end{itemize}

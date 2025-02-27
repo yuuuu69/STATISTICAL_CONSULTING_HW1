@@ -30,6 +30,7 @@ execute:
 ```{r, message=FALSE}
 library(Hmisc)
 
+
 data <- read.csv("C:\\Users\\user\\Desktop\\titanic.csv")
 describe(data)
 ```
@@ -67,6 +68,7 @@ ggplot(data, aes(x = as.factor(Survived), fill = as.factor(Survived))) +
 
 
 ```
+
 # Conclusion
 
 \begin{itemize}

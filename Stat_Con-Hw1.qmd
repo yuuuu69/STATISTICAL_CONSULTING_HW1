@@ -27,12 +27,12 @@ execute:
 
 # Data description
 
-```{r, message=FALSE}
+```{r, message=FALSE,results='asis'}
 library(Hmisc)
 
 
-data <- read.csv("C:\\Users\\user\\Desktop\\titanic.csv")
-describe(data)
+data <- read.csv("C:/Users/user/Desktop/NCKU/titanic.csv")
+latex(describe(data),file = "")
 ```
 
 # Data Visualization
